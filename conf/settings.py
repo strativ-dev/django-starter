@@ -4,18 +4,15 @@ import dj_database_url
 
 from pathlib import Path
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = environ.Env(DEBUG=(bool, False))
 env_file = os.path.join(BASE_DIR, ".env")
 environ.Env.read_env(env_file)
 
+AUTH_USER_MODEL = 'user.User'
 SECRET_KEY = env('SECRET_KEY')
-
 DEBUG = env('DEBUG', default=(bool, True))
-
 ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(',')
 
 INSTALLED_APPS = [
@@ -31,6 +28,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     # project
+    'user',
 ]
 
 # Applications only used when DEBUG = True
@@ -125,6 +123,7 @@ if DEBUG:
 else:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Add additional constants only applicable for DEBUG = True
 
