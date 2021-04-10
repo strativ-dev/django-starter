@@ -126,9 +126,10 @@ else:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
-# Add addtional constants only applicable for DEBUG = True
+# Add additional constants only applicable for DEBUG = True
 
 if DEBUG:
     INTERNAL_IPS = [
         '127.0.0.1',
+        'localhost',
     ]
