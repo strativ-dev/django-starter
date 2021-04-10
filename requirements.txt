@@ -1,0 +1,7 @@
+django
+djangorestframework
+django-cors-headers
+django-environ
+dj-database-url
+psycopg2
+sendgrid
