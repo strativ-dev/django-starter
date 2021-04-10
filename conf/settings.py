@@ -33,10 +33,13 @@ INSTALLED_APPS = [
     # project
 ]
 
-# if DEBUG:
-#     INSTALLED_APPS += [
+# Applications only used when DEBUG = True
 
-#     ]
+if DEBUG:
+    INSTALLED_APPS += [
+        'debug_toolbar',
+        'django_extensions',
+    ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -47,6 +50,13 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# Middlewares only used when DEBUG = True
+
+if DEBUG:
+    MIDDLEWARE += [
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
+    ]
 
 ROOT_URLCONF = 'conf.urls'
 
@@ -114,3 +124,11 @@ if DEBUG:
         os.path.dirname(os.path.abspath(__file__))), 'static')]
 else:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+# Add addtional constants only applicable for DEBUG = True
+
+if DEBUG:
+    INTERNAL_IPS = [
+        '127.0.0.1',
+    ]
