@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'rest_framework',
 
     # project
-    'user',
+    'apps.user',
 ]
 
 # Applications only used when DEBUG = True
